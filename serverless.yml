@@ -1,0 +1,22 @@
+service: visitors-aws
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  getVisitors:
+    handler: src/functions/getVisitors.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
+          cors: true
+  postVisitor:
+    handler: src/functions/postVisitor.handler
+    events:
+      - httpApi:
+          path: /
+          method: post
+          cors: true
